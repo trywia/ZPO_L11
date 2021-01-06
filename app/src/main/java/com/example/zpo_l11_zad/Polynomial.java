@@ -1,20 +1,11 @@
 package com.example.zpo_l11_zad;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 public class Polynomial {
     private String[] tab;
 
     public Polynomial(String[] tab) {
-        this.tab = tab;
-    }
-
-    public String[] getTab() {
-        return tab;
-    }
-
-    public void setTab(String[] tab) {
         this.tab = tab;
     }
 

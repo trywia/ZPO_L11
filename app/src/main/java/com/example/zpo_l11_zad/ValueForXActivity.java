@@ -17,8 +17,6 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.Serializable;
-
 public class ValueForXActivity extends AppCompatActivity {
 
     @Override

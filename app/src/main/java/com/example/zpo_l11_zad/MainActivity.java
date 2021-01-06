@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import java.io.Serializable;
-
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "MESSAGE";
 
