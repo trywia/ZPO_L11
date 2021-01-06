@@ -26,8 +26,9 @@ public class DerivativeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_derivative);
 
-        final EditText equation = (EditText) findViewById(R.id.edtInsert);
-        String[] tab = equation.toString().split(",");
+        Intent intent = getIntent();
+        String equation = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String[] tab = equation.split(",");
         Polynomial polynomial = new Polynomial(tab);
         final TextView textView = (TextView) findViewById(R.id.tvResultDerivative);
         String url = "https://newton.now.sh/api/v2/derive/" + polynomial.toString();
@@ -41,6 +42,7 @@ public class DerivativeActivity extends AppCompatActivity {
         {
             Result result = gson.fromJson(response, Result.class); // mapowanie odpowiedzi do klasy Response
             textView.setText(result.toString());
+
 
         }, new Response.ErrorListener() {
             @Override

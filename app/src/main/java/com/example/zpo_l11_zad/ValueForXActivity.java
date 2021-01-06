@@ -28,14 +28,13 @@ public class ValueForXActivity extends AppCompatActivity {
     }
 
     public void onBtnCalculateClick(View view) {
-        //final EditText equation = (EditText) findViewById(R.id.edtInsert);
         Intent intent = getIntent();
         String equation = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         String[] tab = equation.split(",");
         Polynomial polynomial = new Polynomial(tab);
         final TextView textView = (TextView) findViewById(R.id.tvResult);
         final EditText valX = (EditText) findViewById(R.id.edtValue);
-        String url = "https://newton.now.sh/api/v2/simplify/" + polynomial.insertX(Double.parseDouble(valX.toString()));
+        String url = "https://newton.now.sh/api/v2/simplify/" + polynomial.insertX(Double.parseDouble(valX.getText().toString()));
 
         RequestQueue queue = Volley.newRequestQueue(this); // kolejka żądań
 
@@ -47,6 +46,7 @@ public class ValueForXActivity extends AppCompatActivity {
             Result result = gson.fromJson(response, Result.class); // mapowanie odpowiedzi do klasy Response
             textView.setText(result.toString());
 
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -55,7 +55,7 @@ public class ValueForXActivity extends AppCompatActivity {
         }
         );
 
-        queue.add(stringRequest); // dodanie do kolejki */
+        queue.add(stringRequest); // dodanie do kolejki
     }
 
     public void onBtnReturnValueClick(View view) {

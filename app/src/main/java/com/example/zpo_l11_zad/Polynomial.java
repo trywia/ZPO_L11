@@ -1,6 +1,7 @@
 package com.example.zpo_l11_zad;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Polynomial {
     private String[] tab;
@@ -24,22 +25,28 @@ public class Polynomial {
 
     @Override
     public String toString() {
-        String[] add = {};
+        String[] add = new String[tab.length];
+        String[] addRev = new String[add.length];
         String result = "";
 
-        for (int i = tab.length; i < 0; i--) {
-            if (i == tab.length) {
-                add[i] = tab[i] + "x%5E" + i;
+        for (int i = tab.length - 1; i >= 0; i--) {
+            if (i == tab.length - 1) {
+                add[i] = tab[tab.length - 1 - i] + "x%5E" + i;
             } else {
-                if (tab[i].contains("-")) {
-                    add[i] = tab[i] + "x%5E" + i;
-                } else {
-                    add[i] = "+" + tab[i] + "x%5E" + i;
+                    add[i] = "%2B" + tab[tab.length - 1 - i] + "x%5E" + i;
                 }
             }
+
+        for (int j = 0; j < add.length; j++) {
+            addRev[j] = add[add.length - 1 - j];
         }
 
-        result = Arrays.toString(add);
+        result = Arrays.toString(addRev);
+        result = result.replace(",", "");
+        result = result.replace("-", "%2D");
+        result = result.replace("%2B%2D", "%2D");
+
+        result = result.substring(1, result.length() - 1);
         return result;
     }
 }

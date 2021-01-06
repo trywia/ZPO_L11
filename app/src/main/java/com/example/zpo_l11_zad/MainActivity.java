@@ -21,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnValueForXClick(View view) {
         final EditText equation = (EditText) findViewById(R.id.edtInsert);
         Intent intent = new Intent(this, ValueForXActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, equation.toString());
+        intent.putExtra(EXTRA_MESSAGE, equation.getText().toString());
         startActivity(intent);
     }
 
     public void onBtnDerivativeClick(View view) {
         final EditText equation = (EditText) findViewById(R.id.edtInsert);
         Intent intent = new Intent(this, DerivativeActivity.class);
-        intent.putExtra(EXTRA_MESSAGE, equation.toString());
+        intent.putExtra(EXTRA_MESSAGE, equation.getText().toString());
         startActivity(intent);
     }
 }
